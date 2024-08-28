@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import SearchBar from '../components/SearchBar'
 
 const HomeScreen = () => {
     return (
         <View style={styles.container}>
-            <Text> HomeScreen</Text>
+            <SearchBar />
         </View>
     )
 }
