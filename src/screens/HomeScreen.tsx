@@ -3,13 +3,17 @@ import { StyleSheet, View, Text } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios'
 
+import { API_KEY } from "@env"
+
+
 const HomeScreen = () => {
     const [query, setQuery] = useState<string>('')
 
     const searchBooks = async () => {
         const response = await axios('https://www.googleapis.com/books/v1/volumes', {
             params: {
-                q: query
+                q: query,
+                key: API_KEY
             }
         })
 
