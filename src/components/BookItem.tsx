@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {IBook} from '../types';
 
 const BookItem = (props: IBook) => {
@@ -22,6 +23,13 @@ const BookItem = (props: IBook) => {
         <Text style={styles.title}>{title}</Text>
 
         <Text style={styles.author}>{authors?.join(', ')}</Text>
+
+        {averageRating && (
+          <View style={styles.ratingContainer}>
+            <Icon name="star" color="yellow" size={20} />
+            <Text style={styles.rating}>{averageRating}</Text>
+          </View>
+        )}
 
         <Text style={styles.pages}>{pageCount} pages</Text>
 
