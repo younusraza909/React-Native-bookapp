@@ -2669,6 +2669,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.52.2":
+  version: 5.52.2
+  resolution: "@tanstack/query-core@npm:5.52.2"
+  checksum: 8750cb3aa88044c2ea6c15c0a6ab53f355fa60ec568bcd76bdcb873c982c7ddd85e454075b2cba72320ac7bd4648fad9b4af80beaacd2f223ed75213c3a14ef1
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.52.2":
+  version: 5.52.2
+  resolution: "@tanstack/react-query@npm:5.52.2"
+  dependencies:
+    "@tanstack/query-core": 5.52.2
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: decaed468b1884859db949bcc67c129648f9212bcd688a9683e8bc9ab8b325263c2c31c30bbf8faa61d7e3ed951dce4828db7fb74533a707d872994be2244514
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -3033,11 +3051,11 @@ __metadata:
     "@react-native/eslint-config": 0.75.2
     "@react-native/metro-config": 0.75.2
     "@react-native/typescript-config": 0.75.2
+    "@tanstack/react-query": ^5.52.2
     "@types/react": ^18.2.6
     "@types/react-test-renderer": ^18.0.0
     axios: ^1.7.5
     babel-jest: ^29.6.3
-    dotenv: ^16.4.5
     eslint: ^8.19.0
     jest: ^29.6.3
     prettier: 2.8.8
