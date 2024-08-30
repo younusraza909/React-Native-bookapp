@@ -2,14 +2,28 @@ import React from 'react';
 import {View, Image, StyleSheet, Text, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {IBook} from '../types';
+import {useNavigation} from '@react-navigation/native';
 
-const BookItem = (props: IBook) => {
-  const {id, volumeInfo} = props;
+interface IBookItem extends IBook {
+  isDescription?: boolean;
+  isPressable?: boolean;
+}
+
+const BookItem = (props: IBookItem) => {
+  const {id, volumeInfo, isDescription = true, isPressable = true} = props;
   const {title, imageLinks, pageCount, authors, averageRating, description} =
     volumeInfo;
 
+  const navigation = useNavigation();
   return (
-    <Pressable style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate('Book', {
+          bookId: id,
+        })
+      }
+      disabled={!isPressable}>
       <Image
         source={{
           uri:
@@ -33,9 +47,11 @@ const BookItem = (props: IBook) => {
 
         <Text style={styles.pages}>{pageCount} pages</Text>
 
-        <Text style={styles.description} numberOfLines={5}>
-          {description}
-        </Text>
+        {isDescription && (
+          <Text style={styles.description} numberOfLines={5}>
+            {description}
+          </Text>
+        )}
       </View>
     </Pressable>
   );
