@@ -15,3 +15,10 @@ export interface IBook {
     previewLink: string;
   };
 }
+
+export type StackParamList = {
+  Home: undefined;
+  Book: {
+    bookId: string;
+  };
+};

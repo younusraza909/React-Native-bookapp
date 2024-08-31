@@ -1,4 +1,4 @@
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {
   ActivityIndicator,
   Linking,
@@ -15,9 +15,11 @@ import BookItem from '../components/BookItem';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/Feather';
 import RenderHTML from 'react-native-render-html';
+import {StackParamList} from '../types';
 
+type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 const BookScreen = () => {
-  const route = useRoute();
+  const route = useRoute<BookScreenRouteProp>();
 
   const {bookId} = route?.params;
   const {width} = useWindowDimensions();
