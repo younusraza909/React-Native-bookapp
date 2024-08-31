@@ -1,14 +1,26 @@
 import {useRoute} from '@react-navigation/native';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Linking,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import useBook from '../hooks/useBook';
 import {ScrollView} from 'react-native-gesture-handler';
 import GoBack from '../components/GoBack';
 import BookItem from '../components/BookItem';
+import moment from 'moment';
+import Icon from 'react-native-vector-icons/Feather';
+import RenderHTML from 'react-native-render-html';
 
 const BookScreen = () => {
   const route = useRoute();
 
   const {bookId} = route?.params;
+  const {width} = useWindowDimensions();
 
   const {data, isFetching, error} = useBook(bookId);
 
@@ -37,6 +49,31 @@ const BookScreen = () => {
         <GoBack />
       </View>
       <BookItem {...data} isPressable={false} isDescription={false} />
+
+      <View style={styles.categories}>
+        {categories.map((category, index) => (
+          <Text style={styles.category} key={index}>
+            {category}
+          </Text>
+        ))}
+      </View>
+      <Text style={styles.publisher}>
+        Published by {publisher} on {moment(publishedDate).format('LL')}
+      </Text>
+
+      <Pressable
+        style={styles.btn}
+        // onPress={async () => await Linking.openURL(previewLink)}
+      >
+        <Text style={styles.btnText}>view</Text>
+        <Icon name="external-link" color="#4ecdc4" size={20} />
+      </Pressable>
+      <RenderHTML
+        contentWidth={width}
+        source={{
+          html: `<p style="color: white;">${description}</p>`,
+        }}
+      />
     </ScrollView>
   );
 };
@@ -70,11 +107,29 @@ const styles = StyleSheet.create({
   publisher: {
     fontSize: 15,
     fontWeight: '500',
+    color: '#fff',
   },
   heading: {
     fontSize: 15,
     fontWeight: '500',
     color: '#4ecdc4',
     textTransform: 'capitalize',
+  },
+  btn: {
+    borderWidth: 1,
+    borderColor: '#4ecdc4',
+    alignSelf: 'flex-start',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  btnText: {
+    fontSize: 15,
+    fontWeight: '500',
+    textTransform: 'uppercase',
+    color: '#fff',
   },
 });
