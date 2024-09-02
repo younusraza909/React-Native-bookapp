@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#4ecdc4',
     paddingVertical: 10,
-    width: 170,
+    flex: 1,
   },
   btnText: {
     fontSize: 15,

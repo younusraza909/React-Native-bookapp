@@ -30,10 +30,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#292f36',
   },
   topContainer: {
-    flexDirection: 'row',
     padding: 20,
+    paddingHorizontal: 5,
     gap: 15,
     maxWidth: 1200,
-    alignSelf: 'center',
   },
 });
