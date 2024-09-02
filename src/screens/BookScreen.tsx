@@ -16,6 +16,7 @@ import moment from 'moment';
 import Icon from 'react-native-vector-icons/Feather';
 import RenderHTML from 'react-native-render-html';
 import {StackParamList} from '../types';
+import SelectBookShelf from '../components/SelectBookShelf';
 
 type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 const BookScreen = () => {
@@ -49,6 +50,7 @@ const BookScreen = () => {
       }}>
       <View style={styles.header}>
         <GoBack />
+        <SelectBookShelf />
       </View>
       <BookItem {...data} isPressable={false} isDescription={false} />
 

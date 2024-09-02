@@ -22,3 +22,9 @@ export type StackParamList = {
     bookId: string;
   };
 };
+
+export enum BookShelves {
+  WantToRead,
+  Read,
+  CurrentlyReading,
+}
