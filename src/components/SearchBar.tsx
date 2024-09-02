@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 15,
-    padding: 15,
+    flex: 1,
   },
   input: {
     padding: 15,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 5,
     backgroundColor: '#4ecdc4',
-    paddingHorizontal: 15,
+    paddingHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
