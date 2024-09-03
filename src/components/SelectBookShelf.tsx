@@ -3,6 +3,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {BookShelves} from '../types';
+import useBookShelves from '../store';
 
 export const BOOK_SHELVES = [
   {label: 'Want to Read', value: BookShelves.WantToRead},
@@ -12,9 +13,17 @@ export const BOOK_SHELVES = [
 
 const TickIcon = () => <Icon name="check" size={25} color="#4ecdc4" />;
 
-const SelectBookShelf = () => {
+interface ISelectBookShelf {
+  bookId: string;
+}
+
+const SelectBookShelf = (props: ISelectBookShelf) => {
+  const {bookId} = props;
+  const {addBook, books} = useBookShelves();
+  const book = books.find(item => item.bookId === bookId);
+
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(book?.bookShelfId || null);
   const [items, setItems] = useState(BOOK_SHELVES);
 
   return (
@@ -25,6 +34,9 @@ const SelectBookShelf = () => {
       setOpen={setOpen}
       setValue={setValue}
       setItems={setItems}
+      onChangeValue={bookShelveId =>
+        addBook(bookId, bookShelveId as BookShelves)
+      }
       listMode="SCROLLVIEW"
       containerStyle={styles.container}
       placeholder="Add to Bookshelf"

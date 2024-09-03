@@ -50,16 +50,17 @@ const BookScreen = () => {
       }}>
       <View style={styles.header}>
         <GoBack />
-        <SelectBookShelf />
+        <SelectBookShelf bookId={bookId} />
       </View>
       <BookItem {...data} isPressable={false} isDescription={false} />
 
       <View style={styles.categories}>
-        {categories.map((category, index) => (
-          <Text style={styles.category} key={index}>
-            {category}
-          </Text>
-        ))}
+        {categories &&
+          categories.map((category, index) => (
+            <Text style={styles.category} key={index}>
+              {category}
+            </Text>
+          ))}
       </View>
       <Text style={styles.publisher}>
         Published by {publisher} on {moment(publishedDate).format('LL')}
