@@ -1630,6 +1630,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@google/generative-ai@npm:^0.17.1":
+  version: 0.17.1
+  resolution: "@google/generative-ai@npm:0.17.1"
+  checksum: 4e2d061cb9e85203d61873003a12e4680609d58cdce53a4dc2146e158dfc269974c8d465aadce9e3c81cd5610a3a60e75205e4ed42d8292bb4c6f1955130bb4e
+  languageName: node
+  linkType: hard
+
 "@hapi/hoek@npm:^9.0.0, @hapi/hoek@npm:^9.3.0":
   version: 9.3.0
   resolution: "@hapi/hoek@npm:9.3.0"
@@ -3245,6 +3252,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@google/generative-ai": ^0.17.1
     "@react-native-async-storage/async-storage": ^2.0.0
     "@react-native/babel-preset": 0.75.2
     "@react-native/eslint-config": 0.75.2

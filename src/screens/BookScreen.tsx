@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import RenderHTML from 'react-native-render-html';
 import {StackParamList} from '../types';
 import SelectBookShelf from '../components/SelectBookShelf';
+import BookSummary from '../components/BookSummary';
 
 type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 const BookScreen = () => {
@@ -68,17 +69,18 @@ const BookScreen = () => {
 
       <Pressable
         style={styles.btn}
-        // onPress={async () => await Linking.openURL(previewLink)}
-      >
+        onPress={async () => await Linking.openURL(previewLink)}>
         <Text style={styles.btnText}>view</Text>
         <Icon name="external-link" color="#4ecdc4" size={20} />
       </Pressable>
       <RenderHTML
         contentWidth={width}
         source={{
-          html: `<p style="color: white;">${description}</p>`,
+          html: `<section style="color: white;">${description}</section>`,
         }}
       />
+
+      <BookSummary title={title} authors={authors} />
     </ScrollView>
   );
 };
