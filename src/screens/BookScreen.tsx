@@ -53,7 +53,7 @@ const BookScreen = () => {
         <GoBack />
         <SelectBookShelf bookId={bookId} />
       </View>
-      <BookItem {...data} isPressable={false} isDescription={false} />
+      <BookItem {...data!} isPressable={false} isDescription={false} />
 
       <View style={styles.categories}>
         {categories &&
