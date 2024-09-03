@@ -1,17 +1,25 @@
 import {QueryObserverResult, RefetchOptions} from '@tanstack/react-query';
 import React from 'react';
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 interface ISearchBar {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  isFetching: boolean;
   onPress: (
     options?: RefetchOptions | undefined,
   ) => Promise<QueryObserverResult<any, Error>>;
 }
 
-const SearchBar = ({value, setValue, onPress}: ISearchBar) => {
+const SearchBar = ({value, setValue, onPress, isFetching}: ISearchBar) => {
   return (
     <View style={styles.container}>
       <TextInput
@@ -27,8 +35,14 @@ const SearchBar = ({value, setValue, onPress}: ISearchBar) => {
         onPress={() => {
           onPress();
         }}>
-        <Icon name="search" color="#fff" size={20} />
-        <Text style={styles.text}>search</Text>
+        {isFetching ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <>
+            <Icon name="search" color="#fff" size={20} />
+            <Text style={styles.text}>search</Text>
+          </>
+        )}
       </Pressable>
     </View>
   );

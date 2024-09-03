@@ -8,13 +8,18 @@ import GoToBookShelves from '../components/GoToBookShelves';
 
 const HomeScreen = () => {
   const [query, setQuery] = useState<string>('');
-  const {data, refetch} = useSearch(query);
+  const {data, refetch, isFetching} = useSearch(query);
 
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <GoToBookShelves />
-        <SearchBar value={query} setValue={setQuery} onPress={refetch} />
+        <SearchBar
+          value={query}
+          setValue={setQuery}
+          onPress={refetch}
+          isFetching={isFetching}
+        />
       </View>
 
       <FlatList
